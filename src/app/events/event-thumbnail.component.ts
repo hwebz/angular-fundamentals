@@ -15,7 +15,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
         <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
         <span *ngSwitchDefault>(Normal Start)</span>
       </div>
-      <div>Price: \${{event?.price}}<div>
+      <div
+        [ngStyle]="{
+          color: event?.time === '10:00 am' ? '#003300' : ''
+        }"
+      >Price: \${{event?.price}}<div>
       <div *ngIf="event?.location" [hidden]="!event?.location" [ngClass]="getStartTimeClass()">
         <span>Location: {{event?.location.address}}</span>
         <span class="pad-left">{{event?.location.city}}, {{event?.location.country}}</span>
