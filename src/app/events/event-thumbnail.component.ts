@@ -17,6 +17,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   styles: [`
     .pad-left { margin-left: 10px; }
     .well div { color: #bbb; }
+    .thumbnail { min-height: 210px; }
   `]
 })
 export class EventThumbnailComponent {
