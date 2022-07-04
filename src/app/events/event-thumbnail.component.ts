@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { IEvent } from './shared';
 
 @Component({
   selector: 'event-thumbnail',
@@ -21,8 +22,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
         }"
       >Price: \${{event?.price}}<div>
       <div *ngIf="event?.location" [hidden]="!event?.location" [ngClass]="getStartTimeClass()">
-        <span>Location: {{event?.location.address}}</span>
-        <span class="pad-left">{{event?.location.city}}, {{event?.location.country}}</span>
+        <span>Location: {{event?.location?.address}}</span>
+        <span class="pad-left">{{event?.location?.city}}, {{event?.location?.country}}</span>
       <div>
       <div *ngIf="event?.onlineUrl">
         Online URL: {{event?.onlineUrl}}
@@ -40,7 +41,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   `]
 })
 export class EventThumbnailComponent {
-  @Input() event: any;
+  @Input() event?: IEvent;
 
   getStartTimeClass() {
     const isLateStart = this.event && this.event.time === '10:00 am';
