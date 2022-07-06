@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { ISession } from "../shared";
+import { ISession, restrictedWords } from "../shared";
 
 @Component({
   templateUrl: './create-session.component.html',
@@ -26,7 +26,8 @@ export class CreateSessionComponent implements OnInit {
     this.presenter = new FormControl('', Validators.required);
     this.duration = new FormControl('', Validators.required);
     this.level = new FormControl('', Validators.required);
-    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(20)]);
+    // this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400), this.restrictedWords]);
+    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400), restrictedWords(['foo', 'bar'])]);
 
     this.newSessionForm = new FormGroup({
       name: this.name,
@@ -37,6 +38,10 @@ export class CreateSessionComponent implements OnInit {
     });
   }
 
+  // private restrictedWords(control: FormControl): { [key: string]: any } | null {
+  //   return control.value.includes('foo') ? { restrictedWords: 'foo' } : null;
+  // }
+
   saveSession(formValues: any) {
     const session: ISession = {
       ...formValues,
@@ -44,6 +49,8 @@ export class CreateSessionComponent implements OnInit {
       id: undefined,
       voters: []
     };
+
+    console.log(this.abstract.errors);
 
     console.log(session);
   }

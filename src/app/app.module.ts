@@ -18,6 +18,7 @@ import { NavBarComponent } from './nav/navbar.component';
 import { appRoutes } from './router';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SessionListComponent } from './events/event-details/session-list.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CreateEventComponent,
     Error404Component,
     CreateSessionComponent,
+    SessionListComponent,
   ],
   imports: [
     BrowserModule,
