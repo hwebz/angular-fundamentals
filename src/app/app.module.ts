@@ -24,6 +24,7 @@ import {
   TOASTR_TOKEN,
   Toastr,
   JQ_TOKEN,
+  SimpleModalComponent,
 } from './common';
 
 let toastr: Toastr = (window as any)['toastr'];
@@ -40,7 +41,8 @@ let jQuery: any = (window as any)['$'];
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,10 @@ let jQuery: any = (window as any)['$'];
     {
       provide: TOASTR_TOKEN,
       useValue: toastr
+    },
+    {
+      provide: JQ_TOKEN,
+      useValue: jQuery,
     },
     // {
     //   provide: MinimalLogger,
