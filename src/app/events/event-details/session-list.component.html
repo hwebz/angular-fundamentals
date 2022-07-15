@@ -7,7 +7,7 @@
         </div>
         <div class="body" well-body id="body">
           <h6>{{session.presenter}}</h6>
-          <span>Duration: {{session.duration}}</span><br />
+          <span>Duration: {{session.duration | duration}}</span><br />
           <span>Level: {{session.level}}</span>
           <p>{{session.abstract}}</p>
         </div>
