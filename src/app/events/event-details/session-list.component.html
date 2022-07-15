@@ -10,6 +10,7 @@
           <span>Duration: {{session.duration | duration}}</span><br />
           <span>Level: {{session.level}}</span>
           <p>{{session.abstract}}</p>
+          <p>Voters: {{session.voters.length}} {{session.voters.length > 1 ? 'people' : 'person'}}</p>
         </div>
     </collapsible-well>
   </div>

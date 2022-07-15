@@ -15,6 +15,7 @@ export class EventDetailsComponent {
   event: any;
   addMode!: boolean;
   filterBy: string = 'all';
+  sortBy: string = 'name';
 
   constructor(private eventService: EventService, private route: ActivatedRoute) {}
 
@@ -40,5 +41,9 @@ export class EventDetailsComponent {
 
   handleFilter(selectedFilter: string) {
     this.filterBy = selectedFilter;
+  }
+
+  handleSort(selectedSort: string) {
+    this.sortBy = selectedSort;
   }
 }
