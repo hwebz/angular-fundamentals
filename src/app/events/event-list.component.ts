@@ -11,7 +11,7 @@ import { EventService } from './shared/event.service';
       <hr />
       <div class="row">
         <div class="col-md-4" *ngFor="let event of events">
-          <event-thumbnail (click)="" [event]="event"></event-thumbnail>
+          <event-thumbnail [event]="event"></event-thumbnail>
         </div>
       </div>
   </div>
