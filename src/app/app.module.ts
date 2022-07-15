@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 import { Error404Component } from './errors/404.component';
 import { EventsAppComponent } from './events-app.component';
 import {
@@ -20,9 +19,15 @@ import { appRoutes } from './router';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionListComponent } from './events/event-details/session-list.component';
-import { CollapsibleWellComponent } from './common/collapsible-well.componen';
+import {
+  CollapsibleWellComponent,
+  TOASTR_TOKEN,
+  Toastr,
+  JQ_TOKEN,
+} from './common';
 
 let toastr: Toastr = (window as any)['toastr'];
+let jQuery: any = (window as any)['$'];
 @NgModule({
   declarations: [
     EventsAppComponent,
