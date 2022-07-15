@@ -14,6 +14,8 @@ import { EventService } from "../shared/event.service";
 export class EventDetailsComponent {
   event: any;
   addMode!: boolean;
+  filterBy: string = 'all';
+
   constructor(private eventService: EventService, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -34,5 +36,9 @@ export class EventDetailsComponent {
 
   cancelAddSession() {
     this.addMode = false;
+  }
+
+  handleFilter(selectedFilter: string) {
+    this.filterBy = selectedFilter;
   }
 }
