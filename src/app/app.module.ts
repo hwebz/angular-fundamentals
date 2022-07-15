@@ -49,7 +49,18 @@ let toastr: Toastr = (window as any)['toastr'];
       provide: TOASTR_TOKEN,
       useValue: toastr
     },
-    EventRouteActivator,
+    // {
+    //   provide: MinimalLogger,
+    //   useExisting: Logger
+    // },
+    // {
+    //   provide: Logger,
+    //   useFactory: factory()
+    // },
+    {
+      provide: EventRouteActivator,
+      useClass: EventRouteActivator
+    },
     EventListResolver,
     {
       provide: 'canDeactivateCreateEvent',
