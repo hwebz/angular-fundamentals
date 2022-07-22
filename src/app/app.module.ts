@@ -12,7 +12,8 @@ import {
   EventThumbnailComponent,
   CreateSessionComponent,
   DurationPipe,
-  UpVoteComponent
+  UpVoteComponent,
+  VoterService
 } from './events'
 import { EventService } from './events/shared/event.service';
 import { NavBarComponent } from './nav/navbar.component';
@@ -82,6 +83,7 @@ let jQuery: any = (window as any)['$'];
       useValue: checkDirtyValue
     },
     AuthService,
+    VoterService,
   ],
   bootstrap: [EventsAppComponent]
 })
