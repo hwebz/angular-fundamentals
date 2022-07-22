@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
-import { ISession } from "../shared";
+import { ActivatedRoute, Data, Params } from "@angular/router";
+import { IEvent, ISession } from "../shared";
 import { EventService } from "../shared/event.service";
 
 @Component({
@@ -20,8 +20,8 @@ export class EventDetailsComponent {
   constructor(private eventService: EventService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.params.forEach((params: Params) => {
-      this.event = this.eventService.getEvent(+params['id']);
+    this.route.data.forEach((data: Data) => {
+      this.event = data['event'];
       this.addMode = false;
     })
   }

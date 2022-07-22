@@ -7,7 +7,6 @@ import { EventsAppComponent } from './events-app.component';
 import {
   CreateEventComponent,
   EventDetailsComponent,
-  EventRouteActivator,
   EventListResolver,
   EventsListComponent,
   EventThumbnailComponent,
@@ -15,7 +14,8 @@ import {
   DurationPipe,
   UpVoteComponent,
   VoterService,
-  LocationValidator
+  LocationValidator,
+  EventResolver
 } from './events'
 import { EventService } from './events/shared/event.service';
 import { NavBarComponent } from './nav/navbar.component';
@@ -77,10 +77,7 @@ let jQuery: any = (window as any)['$'];
     //   provide: Logger,
     //   useFactory: factory()
     // },
-    {
-      provide: EventRouteActivator,
-      useClass: EventRouteActivator
-    },
+    EventResolver,
     EventListResolver,
     {
       provide: 'canDeactivateCreateEvent',
