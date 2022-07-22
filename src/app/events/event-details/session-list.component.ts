@@ -34,4 +34,12 @@ export class SessionListComponent implements OnChanges {
       });
     }
   }
+
+  toggleVote(session: ISession) {
+
+  }
+
+  userHasVoted(session: ISession): boolean {
+    return true;
+  }
 }

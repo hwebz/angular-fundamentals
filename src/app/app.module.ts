@@ -11,7 +11,8 @@ import {
   EventsListComponent,
   EventThumbnailComponent,
   CreateSessionComponent,
-  DurationPipe
+  DurationPipe,
+  UpVoteComponent
 } from './events'
 import { EventService } from './events/shared/event.service';
 import { NavBarComponent } from './nav/navbar.component';
@@ -44,7 +45,8 @@ let jQuery: any = (window as any)['$'];
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpVoteComponent
   ],
   imports: [
     BrowserModule,
