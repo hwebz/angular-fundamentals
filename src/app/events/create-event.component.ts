@@ -31,13 +31,15 @@ export class CreateEventComponent implements OnInit {
         country: 'Angularistan'
       },
       onlineUrl: 'http://ngSpectacular.com',
-      imageUrl: 'http://ngSpectacular.com/logo.png'
+      imageUrl: 'http://ngSpectacular.com/logo.png',
     } as IEvent;
   }
 
   saveEvent(formValues: any) {
-    this.eventService.saveEvent(formValues);
-    this.route.navigate(['/events']);
+    this.eventService.saveEvent(formValues).subscribe(() => {
+      this.isDirty = false;
+      this.route.navigate(['/events']);
+    });
   }
 
   cancel() {

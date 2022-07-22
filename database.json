@@ -316,6 +316,31 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Ng Spectacular 2222",
+      "date": "08/08/2028",
+      "time": "10:00 am",
+      "price": 799.99,
+      "location": {
+        "address": "456 Happy St",
+        "city": "Felicity",
+        "country": "Angularistan"
+      },
+      "onlineUrl": "http://ngSpectacular.com",
+      "imageUrl": "/assets/images/ng-vegas.png",
+      "id": 6,
+      "sessions": [
+        {
+          "name": "Demo Session",
+          "presenter": "Ha Do",
+          "duration": 1,
+          "level": "Beginner",
+          "abstract": "dasdsasa fsdfa s",
+          "id": 1,
+          "voters": []
+        }
+      ]
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
 import { catchError, Observable, of } from "rxjs";
 import { IEvent, ISession } from "./event.model";
@@ -332,18 +332,27 @@ export class EventService {
 
   getEvent(id: number): Observable<IEvent> {
     return this.http.get<IEvent>(`/api/events/${id}`)
-      .pipe(catchError(this.handleError<IEvent>('getEvent', undefined)));
+      .pipe(catchError(this.handleError<IEvent>('getEvent')));
   }
 
-  saveEvent(event: IEvent) {
-    event.id = 999;
-    event.sessions = [];
-    EVENTS.push(event);
+  saveEvent(event: IEvent): Observable<any> {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    return this.http.post('/api/events', event, options)
+      .pipe(catchError(this.handleError<IEvent>('saveEvent')));
   }
 
-  updateEvent(event: IEvent) {
-    const index = EVENTS.findIndex((e: IEvent) => e.id === event.id);
-    EVENTS[index] = event;
+  updateEvent(event: IEvent): Observable<any> {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    return this.http.put(`/api/events/${event.id}`, event, options)
+      .pipe(catchError(this.handleError<IEvent>('updateEvent')));
   }
 
   searchSessions(searchTerm: string) {
