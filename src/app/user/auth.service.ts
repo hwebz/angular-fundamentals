@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, of, tap } from "rxjs";
+import { catchError, first, Observable, of, tap } from "rxjs";
 import { IUser } from "./user.model";
 
 @Injectable()
@@ -61,10 +61,23 @@ export class AuthService {
   }
 
   updateCurrentUser(firstName: string, lastName: string) {
-    this.currentUser = {
-      ...this.currentUser,
-      firstName,
-      lastName,
-    } as IUser;
+    // this.currentUser = {
+    //   ...this.currentUser,
+    //   firstName,
+    //   lastName,
+    // } as IUser;
+
+    if (this.currentUser) {
+      this.currentUser.firstName = firstName;
+      this.currentUser.lastName = lastName;
+    }
+
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+
+    return this.http.post('/api/users/${this.currentUser.id}', this.currentUser, options);
   }
 }
