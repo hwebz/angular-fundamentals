@@ -14,8 +14,13 @@ export class VoterService {
     }
   }
 
-  deleteVoter(session: ISession, userName?: string): void {
-    session.voters = session.voters.filter((voter: string) => voter !== userName);
+  deleteVoter(eventId: number, session: ISession, voterName: string): void {
+    session.voters = session.voters.filter((voter: string) => voter !== voterName);
+
+    const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
+    this.http.delete(url)
+      .pipe(catchError(this.handleError('deleteVoter')))
+      .subscribe();
   }
   
   addVoter(event: IEvent, session: ISession, userName?: string) {
