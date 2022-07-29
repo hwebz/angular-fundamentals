@@ -41,6 +41,25 @@ export class AuthService {
     return !!this.currentUser;
   }
 
+  checkAuthenticationStatus() {
+    this.http.get('/api/currentIdentity')
+      .pipe(tap((data: any) => {
+        if (data instanceof Object) {
+          this.currentUser = <IUser> data;
+        }
+      }))
+    // subscribe inside the service already
+    .subscribe()
+
+    // OR return Observable for component to subscribe
+    // return this.http.get('/api/currentIdentity')
+    // .pipe(tap((data: any) => {
+    //   if (data instanceof Object) {
+    //     this.currentUser = <IUser> data;
+    //   }
+    // }))
+  }
+
   updateCurrentUser(firstName: string, lastName: string) {
     this.currentUser = {
       ...this.currentUser,
