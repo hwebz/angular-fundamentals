@@ -1,5 +1,6 @@
 import { DebugElement } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { By } from "@angular/platform-browser";
 import { AuthService } from "src/app/user/auth.service"
 import { IUser } from "src/app/user/user.model";
 import { DurationPipe, IEvent, ISession } from "../shared";
@@ -71,7 +72,8 @@ describe('SessionListComponent', () => {
 
       fixture.detectChanges();
 
-      expect(element.querySelector('[well-title]')?.textContent).toContain('Session 1')
+      // expect(element.querySelector('[well-title]')?.textContent).toContain('Session 1')
+      expect(debugEl.query(By.css('[well-title]')).nativeElement.textContent).toContain('Session 1')
     })
   })
 })
