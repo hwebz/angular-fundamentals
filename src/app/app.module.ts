@@ -32,8 +32,8 @@ import {
   ModalTriggerDirective,
 } from './common';
 
-let toastr: Toastr = (window as any)['toastr'];
-let jQuery: any = (window as any)['$'];
+const toastr: Toastr = (window as any)['toastr'];
+const jQuery: any = (window as any)['$'];
 @NgModule({
   declarations: [
     EventsAppComponent,

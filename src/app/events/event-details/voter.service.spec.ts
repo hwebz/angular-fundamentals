@@ -13,7 +13,7 @@ describe('VoterService', () => {
 
   describe('deleteVoter', () => {
     it('should remove the voter from the list of voters', () => {
-      let session = {
+      const session = <ISession> {
         id: 6,
         voters: ['joe', 'john']
       };
@@ -26,7 +26,7 @@ describe('VoterService', () => {
     })
 
     it('should call http.delete with the right URL', () => {
-      let session = {
+      const session = <ISession> {
         id: 6,
         voters: ['joe', 'john']
       };
@@ -40,7 +40,7 @@ describe('VoterService', () => {
 
   describe('addVoter', () => {
     it('should call http.post with the right URL', () => {
-      let session = {
+      const session = <ISession> {
         id: 6,
         voters: ['john']
       };

@@ -7,4 +7,4 @@ export interface Toastr {
   error(msg: string, title?: string): void;
 }
 
-export let TOASTR_TOKEN = new InjectionToken<Toastr>('toastr');
+export const TOASTR_TOKEN = new InjectionToken<Toastr>('toastr');
