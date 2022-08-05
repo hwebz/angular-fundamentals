@@ -1,6 +1,7 @@
 import { DebugElement } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { AuthService } from "src/app/user/auth.service"
+import { IUser } from "src/app/user/user.model";
 import { DurationPipe, IEvent, ISession } from "../shared";
 import { SessionListComponent } from "./session-list.component";
 import { VoterService } from "./voter.service";
@@ -15,6 +16,15 @@ describe('SessionListComponent', () => {
   let debugEl: DebugElement;
 
   beforeEach(() => {
+    mockAuthService = <AuthService> {
+      isAuthenticated: () => true,
+      currentUser: <IUser>{
+        userName: 'Joe'
+      }
+    };
+    mockVoterService = <VoterService> <unknown>{
+      userHasVoted: () => true,
+    };
     TestBed.configureTestingModule({
       declarations: [
         SessionListComponent,
@@ -38,10 +48,10 @@ describe('SessionListComponent', () => {
   })
   
   describe('initial display', () => {
-    it('should have the correct title', () => {
+    it('should have the correct name', () => {
       component.sessions = <ISession[]> [
         {
-          name: 'session 1',
+          name: 'Session 1',
           id: 3,
           presenter: 'Joe',
           duration: 1,
@@ -60,6 +70,8 @@ describe('SessionListComponent', () => {
       component.ngOnChanges();
 
       fixture.detectChanges();
+
+      expect(element.querySelector('[well-title]')?.textContent).toContain('Session 1')
     })
   })
 })
